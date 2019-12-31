@@ -62,8 +62,6 @@ setInterval(function() {
 
 const svgPath = document.querySelectorAll('.st0');
 
-console.log(svgPath);
-
 const svgText = anime({
   targets: svgPath,
   loop: true,
