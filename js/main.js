@@ -9,9 +9,9 @@ function createRandom(min, max) {
 
 function generateFlake() {
 
-    var floconBleu = document.createElement("img");
-    floconBleu.classList.add("floconBleu");
-    floconBleu.setAttribute("src", "images/flocon-bleu.png");
+    // var floconBleu = document.createElement("img");
+    // floconBleu.classList.add("floconBleu");
+    // floconBleu.setAttribute("src", "images/flocon-bleu.png");
 
     var floconOr = document.createElement("img");
     floconOr.classList.add("floconOr");
@@ -25,13 +25,13 @@ function generateFlake() {
     floconOr.style.top = flakeWidth * -1 + "px";
     floconOr.style.left = createRandom(0, window.innerWidth - flakeWidth) + "px";
     floconOr.style.position = "fixed";
-    floconOr.style.zIndex = -1;
+    floconOr.style.zIndex = 1;
 
-    floconBleu.style.width = flakeWidth + "px";
-    floconBleu.style.top = flakeWidth * -1 + "px";
-    floconBleu.style.left = createRandom(0, window.innerWidth - flakeWidth) + "px";
-    floconBleu.style.position = "fixed";
-    floconBleu.style.zIndex = -1;
+    // floconBleu.style.width = flakeWidth + "px";
+    // floconBleu.style.top = flakeWidth * -1 + "px";
+    // floconBleu.style.left = createRandom(0, window.innerWidth - flakeWidth) + "px";
+    // floconBleu.style.position = "fixed";
+    // floconBleu.style.zIndex = 1;
 
     // Fonction qui fait partir le flocon d'en haut de l'ecran, jusqu'en bas et le retire
     var flakeInterval = setInterval(function() {
@@ -42,16 +42,16 @@ function generateFlake() {
         }
     }, 10)
 
-    var flakeInterval = setInterval(function() {
-        floconBleu.style.top = floconBleu.offsetTop + 1 + "px";
-        if (floconBleu.offsetTop >= window.innerHeight) {
-            clearInterval(flakeInterval);
-            document.body.removeChild(floconBleu);
-        }
-    }, 10)
+    // var flakeInterval = setInterval(function() {
+    //     floconBleu.style.top = floconBleu.offsetTop + 1 + "px";
+    //     if (floconBleu.offsetTop >= window.innerHeight) {
+    //         clearInterval(flakeInterval);
+    //         document.body.removeChild(floconBleu);
+    //     }
+    // }, 10)
 
     document.body.appendChild(floconOr);
-    document.body.appendChild(floconBleu);
+    // document.body.appendChild(floconBleu);
 }
 
 
@@ -59,3 +59,17 @@ function generateFlake() {
 setInterval(function() {
     generateFlake();
 }, 1200)
+
+const svgPath = document.querySelectorAll('.st0');
+
+console.log(svgPath);
+
+const svgText = anime({
+  targets: svgPath,
+  loop: true,
+  direction: 'alternate',
+  strokeDashoffset: [anime.setDashoffset, 0],
+  easing: 'easeInOutSine',
+  duration: 500,
+  delay: (el, i) => { return i * 500 }
+});
